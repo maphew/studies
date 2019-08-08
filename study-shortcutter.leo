@@ -10,65 +10,80 @@
 <v t="mhw.20190808085013.1"><vh>@path ../shortcutter</vh>
 <v t="mhw.20190808092452.15"><vh>/conda-forge/</vh></v>
 <v t="mhw.20190808092452.14"><vh>/docs/</vh></v>
-<v t="mhw.20190808092452.13"><vh>/shortcutter.egg-info/</vh></v>
 <v t="mhw.20190808092452.12"><vh>/shortcutter/</vh>
 <v t="mhw.20190808085024.7"><vh>@auto __init__.py</vh></v>
 <v t="mhw.20190808085024.6"><vh>@auto _version.py</vh></v>
-<v t="mhw.20190808085024.5"><vh>@auto base.py</vh></v>
+<v t="mhw.20190808085024.5"><vh>@clean base.py</vh>
+<v t="mhw.20190808131212.23"><vh>Declarations (base.py)</vh></v>
+<v t="mhw.20190808131212.24"><vh>class ShortCutter(object)</vh>
+<v t="mhw.20190808131212.25"><vh>ShortCutter(object).__init__</vh></v>
+<v t="mhw.20190808131212.26"><vh>ShortCutter(object)._set_win_vars</vh></v>
+<v t="mhw.20190808131212.27"><vh>ShortCutter(object)._get_desktop_folder</vh></v>
+<v t="mhw.20190808131212.28"><vh>ShortCutter(object)._get_menu_folder</vh></v>
+<v t="mhw.20190808131212.29"><vh>ShortCutter(object)._get_bin_folder_pyexe</vh></v>
+<v t="mhw.20190808131212.30"><vh>ShortCutter(object)._get_activate_wrapper_templates</vh></v>
+<v t="mhw.20190808131212.31"><vh>ShortCutter(object)._make_executable</vh></v>
+<v t="mhw.20190808131212.32"><vh>ShortCutter(object).exe</vh></v>
+<v t="mhw.20190808131212.33"><vh>ShortCutter(object).ba</vh></v>
+<v t="mhw.20190808131212.34"><vh>ShortCutter(object)._get_activate_args</vh></v>
+<v t="mhw.20190808131212.35"><vh>ShortCutter(object)._check_if_conda_root</vh></v>
+<v t="mhw.20190808131212.36"><vh>ShortCutter(object).create_desktop_shortcut</vh></v>
+<v t="mhw.20190808131212.37"><vh>ShortCutter(object).create_menu_shortcut</vh></v>
+<v t="mhw.20190808131212.38"><vh>ShortCutter(object)._path_to_name</vh></v>
+<v t="mhw.20190808131212.39"><vh>ShortCutter(object)._ascii_name</vh></v>
+<v t="mhw.20190808131212.40"><vh>ShortCutter(object)._create_wrapped_shortcut</vh></v>
+<v t="mhw.20190808131212.41"><vh>ShortCutter(object).create_shortcut</vh></v>
+<v t="mhw.20190808131212.42"><vh>ShortCutter(object)._safe_create</vh></v>
+<v t="mhw.20190808131212.43"><vh>ShortCutter(object).create_shortcut_to_env_terminal</vh></v>
+<v t="mhw.20190808131212.44"><vh>ShortCutter(object)._create_shortcut_to_dir</vh></v>
+<v t="mhw.20190808131212.45"><vh>ShortCutter(object)._create_shortcut_file</vh></v>
+<v t="mhw.20190808131212.46"><vh>ShortCutter(object).makedirs</vh></v>
+<v t="mhw.20190808131212.47"><vh>ShortCutter(object).find_target</vh></v>
+<v t="mhw.20190808131212.48"><vh>ShortCutter(object).search_for_target</vh></v>
+<v t="mhw.20190808131212.49"><vh>ShortCutter(object)._is_file_the_target</vh></v>
+<v t="mhw.20190808131212.50"><vh>ShortCutter(object)._get_paths</vh></v>
+</v>
+</v>
 <v t="mhw.20190808085024.4"><vh>@auto exception.py</vh></v>
 <v t="mhw.20190808085024.3"><vh>@auto linux.py</vh></v>
 <v t="mhw.20190808085024.2"><vh>@auto macos.py</vh></v>
-<v t="mhw.20190808085024.1"><vh>@auto windows.py</vh></v>
+<v t="mhw.20190808085024.1"><vh>@clean windows.py</vh>
+<v t="mhw.20190808135317.46"><vh>Declarations (windows.py)</vh></v>
+<v t="mhw.20190808135317.47"><vh>class ShortCutterWindows(ShortCutter)</vh>
+<v t="mhw.20190808135317.48"><vh>ShortCutterWindows(ShortCutter)._set_win_vars</vh></v>
+<v t="mhw.20190808135317.49"><vh>ShortCutterWindows(ShortCutter)._get_desktop_folder</vh></v>
+<v t="mhw.20190808135317.50"><vh>ShortCutterWindows(ShortCutter)._get_menu_folder</vh></v>
+<v t="mhw.20190808135317.51"><vh>ShortCutterWindows(ShortCutter)._get_bin_folder_pyexe</vh></v>
+<v t="mhw.20190808135317.52"><vh>ShortCutterWindows(ShortCutter)._get_activate_wrapper_templates</vh></v>
+<v t="mhw.20190808135317.53"><vh>ShortCutterWindows(ShortCutter)._make_executable</vh></v>
+<v t="mhw.20190808135317.54"><vh>ShortCutterWindows(ShortCutter)._create_shortcut_to_dir</vh></v>
+<v t="mhw.20190808135317.55"><vh>ShortCutterWindows(ShortCutter)._create_shortcut_file</vh></v>
+<v t="mhw.20190808135317.56"><vh>ShortCutterWindows(ShortCutter)._create_shortcut_win</vh></v>
+<v t="mhw.20190808135317.57"><vh>ShortCutterWindows(ShortCutter)._is_file_the_target</vh></v>
+<v t="mhw.20190808135317.58"><vh>ShortCutterWindows(ShortCutter)._get_paths</vh></v>
 </v>
-<v t="mhw.20190808092452.11"><vh>CHANGE_LOG.md</vh></v>
-<v t="mhw.20190808092452.10"><vh>LICENSE</vh></v>
-<v t="mhw.20190808092452.9"><vh>MANIFEST.in</vh></v>
-<v t="mhw.20190808092452.8"><vh>README.md</vh></v>
-<v t="mhw.20190808092452.7"><vh>api.rst</vh></v>
-<v t="mhw.20190808092452.6"><vh>setup.cfg</vh></v>
-<v t="mhw.20190808092452.5"><vh>setup.py</vh></v>
-<v t="mhw.20190808092452.4"><vh>update_and_upload.txt</vh></v>
-<v t="mhw.20190808092452.3"><vh>update_rst</vh></v>
-<v t="mhw.20190808092452.2"><vh>upload</vh></v>
-<v t="mhw.20190808092452.1"><vh>versioneer.py</vh></v>
+</v>
+</v>
 </v>
 </v>
 <v t="mhw.20190808090216.1"><vh>modified</vh>
-<v t="mhw.20190808092640.11"><vh>ShortCutterWindows(ShortCutter)._create_shortcut_win</vh></v>
-<v t="mhw.20190808121627.15"><vh>ShortCutter(object).create_desktop_shortcut</vh></v>
-<v t="mhw.20190808121627.16"><vh>ShortCutter(object).create_menu_shortcut</vh></v>
-<v t="mhw.20190808122913.15"><vh>ShortCutter(object).create_menu_shortcut</vh></v>
+<v t="mhw.20190808131212.41"></v>
+<v t="mhw.20190808135317.56"></v>
+<v t="mhw.20190808131212.36"></v>
+<v t="mhw.20190808131212.37"></v>
 </v>
-<v t="mhw.20190808121955.1"><vh>Found:create_desktop_shortcut</vh>
-<v t="mhw.20190808121627.3"><vh>class ShortCutter(object)</vh>
-<v t="mhw.20190808121627.4"><vh>ShortCutter(object).__init__</vh></v>
-<v t="mhw.20190808121627.5"><vh>ShortCutter(object)._set_win_vars</vh></v>
-<v t="mhw.20190808121627.6"><vh>ShortCutter(object)._get_desktop_folder</vh></v>
-<v t="mhw.20190808121627.7"><vh>ShortCutter(object)._get_menu_folder</vh></v>
-<v t="mhw.20190808121627.8"><vh>ShortCutter(object)._get_bin_folder_pyexe</vh></v>
-<v t="mhw.20190808121627.9"><vh>ShortCutter(object)._get_activate_wrapper_templates</vh></v>
-<v t="mhw.20190808121627.10"><vh>ShortCutter(object)._make_executable</vh></v>
-<v t="mhw.20190808121627.11"><vh>ShortCutter(object).exe</vh></v>
-<v t="mhw.20190808121627.12"><vh>ShortCutter(object).ba</vh></v>
-<v t="mhw.20190808121627.13"><vh>ShortCutter(object)._get_activate_args</vh></v>
-<v t="mhw.20190808121627.14"><vh>ShortCutter(object)._check_if_conda_root</vh></v>
-<v t="mhw.20190808121627.15"></v>
-<v t="mhw.20190808121627.16"></v>
-<v t="mhw.20190808121627.17"><vh>ShortCutter(object)._path_to_name</vh></v>
-<v t="mhw.20190808121627.18"><vh>ShortCutter(object)._ascii_name</vh></v>
-<v t="mhw.20190808121627.19"><vh>ShortCutter(object)._create_wrapped_shortcut</vh></v>
-<v t="mhw.20190808121627.20"><vh>ShortCutter(object).create_shortcut</vh></v>
-<v t="mhw.20190808121627.21"><vh>ShortCutter(object)._safe_create</vh></v>
-<v t="mhw.20190808121627.22"><vh>ShortCutter(object).create_shortcut_to_env_terminal</vh></v>
-<v t="mhw.20190808121627.23"><vh>ShortCutter(object)._create_shortcut_to_dir</vh></v>
-<v t="mhw.20190808121627.24"><vh>ShortCutter(object)._create_shortcut_file</vh></v>
-<v t="mhw.20190808121627.25"><vh>ShortCutter(object).makedirs</vh></v>
-<v t="mhw.20190808121627.26"><vh>ShortCutter(object).find_target</vh></v>
-<v t="mhw.20190808121627.27"><vh>ShortCutter(object).search_for_target</vh></v>
-<v t="mhw.20190808121627.28"><vh>ShortCutter(object)._is_file_the_target</vh></v>
-<v t="mhw.20190808121627.29"><vh>ShortCutter(object)._get_paths</vh></v>
+<v t="mhw.20190808140641.1"><vh>Found:_create_shortcut_win</vh>
+<v t="mhw.20190808135317.55"></v>
+<v t="mhw.20190808135317.54"></v>
+<v t="mhw.20190808135317.56"></v>
 </v>
-<v t="mhw.20190808121626.4"><vh>main (__init__.py)</vh></v>
+<v t="mhw.20190808141042.1"><vh>Found:_create_shortcut_file</vh>
+<v t="mhw.20190808131212.45"></v>
+<v t="mhw.20190808131212.40"></v>
+<v t="mhw.20190808131212.41"></v>
+<v t="mhw.20190808135317.35"><vh>ShortCutterLinux(ShortCutter)._create_shortcut_file</vh></v>
+<v t="mhw.20190808135317.45"><vh>ShortCutterMacOS(ShortCutterLinux)._create_shortcut_file</vh></v>
+<v t="mhw.20190808135317.55"></v>
 </v>
 </vnodes>
 <tnodes>
@@ -81,136 +96,144 @@ My fork: https://github.com/maphew/shortcutter.git
 @path ../shortcutter
 </t>
 <t tx="mhw.20190808085013.1"></t>
+<t tx="mhw.20190808085024.1">@others
+@language python
+@tabwidth -4
+</t>
+<t tx="mhw.20190808085024.5">@others
+@language python
+@tabwidth -4
+</t>
 <t tx="mhw.20190808090216.1">@language python
 @tabwidth -4
 </t>
-<t tx="mhw.20190808092452.1"></t>
-<t tx="mhw.20190808092452.10"></t>
-<t tx="mhw.20190808092452.11"></t>
 <t tx="mhw.20190808092452.12">@path shortcutter</t>
-<t tx="mhw.20190808092452.13">@path shortcutter.egg-info</t>
 <t tx="mhw.20190808092452.14">@path docs</t>
 <t tx="mhw.20190808092452.15">@path conda-forge</t>
-<t tx="mhw.20190808092452.2"></t>
-<t tx="mhw.20190808092452.3"></t>
-<t tx="mhw.20190808092452.4"></t>
-<t tx="mhw.20190808092452.5"></t>
-<t tx="mhw.20190808092452.6"></t>
-<t tx="mhw.20190808092452.7"></t>
-<t tx="mhw.20190808092452.8"></t>
-<t tx="mhw.20190808092452.9"></t>
-<t tx="mhw.20190808092640.11">def _create_shortcut_win(self, shortcut_name, target_path, shortcut_directory, folder=False, icon=None):
-    """
-    Creates a Windows shortcut file.
+<t tx="mhw.20190808131212.23">import os
+import sys
+from os import path as p
+from .exception import ShortcutError, ShortcutNoDesktopError, ShortcutNoMenuError
+import re
+import traceback
 
-    Returns tuple (shortcut_name, target_path, shortcut_file_path)
-    """
-    #icon = r"D:\code-maphew\leo-editor\leo\Icons\LeoApp.ico"
-    if not folder:
-        shortcut_target_path = target_path
-        working_directory = p.dirname(target_path)
-        ext = p.splitext(target_path)[1].upper()
-        if not icon:
-            if ext in self._executable_file_extensions:
-                icon = r'%SystemRoot%\System32\imageres.dll,11'
-    
-    elif not p.isdir(target_path):
-        # create a bat script that opens the folder:
-        
-        wrapper_path = p.join(self.bin_folder_shcut, self.ba('shortcutter__dir__' + self._path_to_name(target_path)))
-        with open(wrapper_path, 'w') as f:
-            f.write(FOLDER_SHORTCUT.format(path=target_path))
-        shortcut_target_path = wrapper_path
-        working_directory = self.bin_folder_shcut
-        icon = r'%SystemRoot%\explorer.exe,0'
-
-    else:
-        shortcut_target_path = target_path
-        working_directory = target_path
-
-    shortcut_file_path = p.join(shortcut_directory, shortcut_name + ".lnk")
-    shortcut = shell.CreateShortCut(shortcut_file_path)
-    shortcut.Targetpath = shortcut_target_path
-    shortcut.WorkingDirectory = working_directory
-    shortcut.Description = "Shortcut to" + p.basename(target_path)
-    if icon:
-        shortcut.IconLocation = icon
-    shortcut.save()
-
-    return shortcut_name, target_path, shortcut_file_path
 
 </t>
-<t tx="mhw.20190808121626.4">def main():
-    from argparse import ArgumentParser
+<t tx="mhw.20190808131212.24">class ShortCutter(object):
+    """
+    Creates applicaton shortcuts for Windows, MacOS and Linux operating systems.
 
-    parser = ArgumentParser(description="Automatic shortcut creator." +
-                                        " Shortcuts auto-activate their environments by default.")
-    parser.add_argument("target", nargs='?', default=None,
-                        help="The target executable to create Desktop and Menu shortcuts.")
-    parser.add_argument("-d", "--desktop", action="store_true", help="Only create a desktop shortcut.")
-    parser.add_argument("-m", "--menu", action="store_true", help="Only create a menu shortcut.")
-    parser.add_argument("-n", "--name", nargs='?', default=None, help="Name of the shortcut without extension (autoname otherwise).")
-    parser.add_argument("-s", "--simple", action="store_true", help="Create simple shortcut without activate wrapper.")
-    parser.add_argument("-t", "--terminal", action="store_true",
-                        help="Create shortcut to environment with shortcutter " +
-                             "(plus shortcut to root environment in case of conda).")
-    args = parser.parse_args()
+    To create desktop and menu shortcuts to ``python``::
 
-    create_desktop = args.desktop
-    create_menu = args.menu
-    activate = not args.simple
-    name = args.name if args.name else None
+        from shortcutter import ShortCutter
+        s = ShortCutter()
+        s.create_desktop_shortcut("python")
+        s.create_menu_shortcut("python")
 
-    if not args.target and not args.terminal:
-        print('Shortcutter needs target or --terminal arguments to work.')
-        return
+    Attributes:
+    -----------
+    raise_errors : bool=False
+        Whether to raise exceptions or skip errors and continue.
+    error_log : object=None
+        File object where to write errors when ``raise_errors=False``.
+        Default is None - do not write errors.
+        Can also be ``sys.stderr`` or ``io.StringIO()``.
+    desktop_folder : str
+        Directory used when creating desktop shortcuts.
+    menu_folder : str
+        Directory used when creating menu shortcuts.
+    bin_folder_pyexe : str
+        ``Scripts`` or ``bin`` dir path. Simply closest to python executable path.
+    bin_folder_shcut : str or None
+        ``Scripts`` or ``bin`` dir path where shortcutter executable was installed.
+    local_root : str
+        Root directory path of the current python environment / installation.
+        Derived from python executable path.
+    activate : bool=True
+        Whether to create shortcuts that automatically activate
+        conda environment / virtual environment.
+    exists : bool=True
+        Whether the target should exist or not.
+        If not then add ``/`` (``\\`` on Windows) at the end of the path to get dir shortcut.
+    activate_args : tuple (str or None, str or None)
+        First is the activate script full path (or None if it's wasn't found) - conda's or venv's.
+        Second is the env argument of the activate script (or None if not needed).
+    """
 
-    # if desktop or menu hasnt been specified create both (i.e. the default)
-    if not create_desktop and not create_menu:
-        create_desktop = True
-        create_menu = True
-
-    sc = ShortCutter(activate=activate, error_log=sys.stdout)
-
-    target_path = sc.find_target(args.target)
-    if target_path or args.terminal:
-
-        desktop_created = False
-        if create_desktop:
-            if args.terminal:
-                desktop_created = sc.create_shortcut_to_env_terminal(name, menu=False)
-            else:
-                ret = sc.create_desktop_shortcut(target_path, name)
-                desktop_created = bool(ret[2])  # shortcut_path = ret[2]
-            if not desktop_created:
-                print("Failed to create desktop shortcut.")
-
-        menu_created = False
-        if create_menu:
-            if args.terminal:
-                menu_created = sc.create_shortcut_to_env_terminal(name, desktop=False)
-            else:
-                ret = sc.create_menu_shortcut(target_path, name)
-                menu_created = bool(ret[2])  # shortcut_path = ret[2]
-            if not menu_created:
-                print("Failed to create menu shortcut.")
-
-        msg = "created for '{}'.".format(args.target if not args.terminal else 'terminal at environment')
-        if desktop_created and menu_created:
-            print('Desktop and menu shortcuts were ' + msg)
-        elif desktop_created and not menu_created:
-            print('Desktop shortcut was ' + msg)
-        elif not desktop_created and menu_created:
-            print('Menu shortcut was ' + msg)
-    else:
-        print("Shortcut creation failed: unable to find '{}'.".format(args.target))
+    @others
 </t>
-<t tx="mhw.20190808121627.10">@staticmethod
+<t tx="mhw.20190808131212.25">def __init__(self, raise_errors=False, error_log=None, activate=True, exists=True):
+    """
+    Creates ShortCutter.
+
+    Parameters
+    ----------
+    raise_errors : bool=False
+        Whether to raise exceptions or skip errors and continue.
+    error_log : object=None
+        File object where to write errors when ``raise_errors=False``.
+        Default is None - do not write errors.
+        Can also be ``sys.stderr`` or ``io.StringIO()``.
+    activate : bool=True
+        Whether to create shortcuts that automatically activate
+        conda environment / virtual environment.
+    exists : bool=True
+        Whether the target should exist or not.
+        If not then add ``/`` (``\\`` on Windows) at the end of the path to get dir shortcut.
+    """
+    self._set_win_vars()  # important on Windows
+
+    self.raise_errors = raise_errors
+    self.error_log = error_log
+    self.activate = activate
+    self.exists = exists
+    self.desktop_folder = self._get_desktop_folder()
+    self.menu_folder = self._get_menu_folder()
+    self.bin_folder_pyexe = self._get_bin_folder_pyexe()
+    shortcutter = self.find_target('shortcutter')
+    self.bin_folder_shcut = p.dirname(shortcutter) if shortcutter else self.bin_folder_pyexe
+    self.local_root = sys.prefix
+    self._ACTIVATE, self._ACTIVATE_PROMPT = self._get_activate_wrapper_templates()
+
+    self.activate_args = self._get_activate_args()  # should be run the last
+
+# might be overridden if needed
+</t>
+<t tx="mhw.20190808131212.26">def _set_win_vars(self):
+    pass
+
+# should be overridden
+</t>
+<t tx="mhw.20190808131212.27">@staticmethod
+def _get_desktop_folder():
+    raise ShortcutError("_get_desktop_folder needs overriding")
+
+# should be overridden
+</t>
+<t tx="mhw.20190808131212.28">@staticmethod
+def _get_menu_folder():
+    raise ShortcutError("_get_menu_folder needs overriding")
+
+# should be overridden
+</t>
+<t tx="mhw.20190808131212.29">@staticmethod
+def _get_bin_folder_pyexe():
+    raise ShortcutError("_get_bin_folder_pyexe needs overriding")
+
+# should be overridden
+</t>
+<t tx="mhw.20190808131212.30">@staticmethod
+def _get_activate_wrapper_templates():
+    raise ShortcutError("_get_activate_wrapper_templates needs overriding")
+
+# should be overridden
+</t>
+<t tx="mhw.20190808131212.31">@staticmethod
 def _make_executable(file_path):
     raise ShortcutError("_make_executable needs overriding")
 
 </t>
-<t tx="mhw.20190808121627.11">def exe(self, app_name):
+<t tx="mhw.20190808131212.32">def exe(self, app_name):
     """
     Returns platform independent executable name:
 
@@ -223,7 +246,7 @@ def _make_executable(file_path):
         return app_name
 
 </t>
-<t tx="mhw.20190808121627.12">def ba(self, script_name):
+<t tx="mhw.20190808131212.33">def ba(self, script_name):
     """
     Returns platform independent shell script (bash/batch) name:
 
@@ -236,7 +259,7 @@ def _make_executable(file_path):
         return script_name
 
 </t>
-<t tx="mhw.20190808121627.13">def _get_activate_args(self):
+<t tx="mhw.20190808131212.34">def _get_activate_args(self):
     """
     Returns tuple: (str or None, str or None).
 
@@ -283,7 +306,7 @@ def _make_executable(file_path):
     return None, None
  
 </t>
-<t tx="mhw.20190808121627.14">def _check_if_conda_root(self, path):
+<t tx="mhw.20190808131212.35">def _check_if_conda_root(self, path):
     """
     Checks if provided path is conda root. It should have
     conda-meta folder, conda executable, activate shell script.
@@ -303,7 +326,7 @@ def _make_executable(file_path):
     return None
 
 </t>
-<t tx="mhw.20190808121627.15">def create_desktop_shortcut(self, target, shortcut_name=None, icon=None):
+<t tx="mhw.20190808131212.36">def create_desktop_shortcut(self, target, shortcut_name=None, icon=None):
     """
     Creates a desktop shortcut to a target.
 
@@ -324,6 +347,7 @@ def _make_executable(file_path):
     tuple (str or None, str or None, str or None)
         (shortcut_name, target_path, shortcut_file_path)
     """
+    print('create_desktop_shortcut() %s' % icon)
     if not p.isdir(self.desktop_folder):
         msg = "Desktop folder '{}' not found.".format(self.desktop_folder)
         if self.raise_errors:
@@ -332,10 +356,10 @@ def _make_executable(file_path):
             self.error_log.write(msg + '\n')
             return None, None, None
     else:
-        return self.create_shortcut(target, self.desktop_folder, shortcut_name)
+        return self.create_shortcut(target, self.desktop_folder, shortcut_name, icon)
 
 </t>
-<t tx="mhw.20190808121627.16">def create_menu_shortcut(self, target, shortcut_name=None, icon=None):
+<t tx="mhw.20190808131212.37">def create_menu_shortcut(self, target, shortcut_name=None, icon=None):
     """
     Creates a menu shortcut to a target.
 
@@ -367,7 +391,7 @@ def _make_executable(file_path):
         return self.create_shortcut(target, self.menu_folder, shortcut_name)
 
 </t>
-<t tx="mhw.20190808121627.17">@classmethod
+<t tx="mhw.20190808131212.38">@classmethod
 def _path_to_name(cls, path):
     """
     Takes three last items from the absolutized path and converts to
@@ -377,14 +401,14 @@ def _path_to_name(cls, path):
     return cls._ascii_name('{}__at__{}'.format(p.basename(path), dirs))
 
 </t>
-<t tx="mhw.20190808121627.18">@staticmethod
+<t tx="mhw.20190808131212.39">@staticmethod
 def _ascii_name(name):
     w_unicode_name = re.sub(r'\W', '_', name)
     w_ascii_name = str(w_unicode_name.encode('utf-8'))[1:].strip('"').strip("'").replace('\\', '_')
     return w_ascii_name
 
 </t>
-<t tx="mhw.20190808121627.19">def _create_wrapped_shortcut(self, shortcut_name, target_path, shortcut_directory, activate_args=None):
+<t tx="mhw.20190808131212.40">def _create_wrapped_shortcut(self, shortcut_name, target_path, shortcut_directory, activate_args=None, icon=None):
     """
     Creates shell script wrapper for shortcut with activation.
     
@@ -428,10 +452,10 @@ def _ascii_name(name):
         with open(wrapper_path, 'w') as f:
             f.write(script)
             self._make_executable(wrapper_path)
-    return self._create_shortcut_file(shortcut_name, wrapper_path, shortcut_directory)
+    return self._create_shortcut_file(shortcut_name, wrapper_path, shortcut_directory, icon)
 
 </t>
-<t tx="mhw.20190808121627.20">def create_shortcut(self, target, shortcut_directory, shortcut_name=None):
+<t tx="mhw.20190808131212.41">def create_shortcut(self, target, shortcut_directory, shortcut_name=None, icon=None):
     """
     Creates a shortcut to a target.
 
@@ -452,6 +476,7 @@ def _ascii_name(name):
     tuple (str, str, str or None)
         (shortcut_name, target_path, shortcut_file_path)
     """
+    print('create_shortcut() %s' % icon)
     # Set the target path:
     target_path = self.find_target(target)
 
@@ -482,12 +507,12 @@ def _ascii_name(name):
                                                                                                        self.exists))
 
         if isdir:
-            return self._create_shortcut_to_dir(shortcut_name, target_path, shortcut_directory)
+            return self._create_shortcut_to_dir(shortcut_name, target_path, shortcut_directory, icon)
 
         elif self.activate:
             activate, env = self.activate_args
             if activate:
-                return self._create_wrapped_shortcut(shortcut_name, target_path, shortcut_directory)
+                return self._create_wrapped_shortcut(shortcut_name, target_path, shortcut_directory, icon)
 
             elif (not activate) and env:
                 raise ShortcutError('Shortcutter failed to find conda root (or activate script there). ' +
@@ -496,13 +521,14 @@ def _ascii_name(name):
                                     'Checked `CONDA_ROOT` environment variable. ' +
                                     'Searched `conda` executable in the PATH.')
         # Use simple shortcuts if self.activate=False or we are installing to common python installation:
-        return self._create_shortcut_file(shortcut_name, target_path, shortcut_directory)
+        return self._create_shortcut_file(shortcut_name, target_path, shortcut_directory, icon)
 
     ret = self._safe_create(create)
+    print('//create_shortcut() %s' % icon)    
     return ret if (ret != 'error') else (shortcut_name, target_path, None)
 
 </t>
-<t tx="mhw.20190808121627.21">def _safe_create(self, create):
+<t tx="mhw.20190808131212.42">def _safe_create(self, create):
     """
     Switches shortcuts creation function error modes.
 
@@ -521,7 +547,7 @@ def _ascii_name(name):
     return ret
 
 </t>
-<t tx="mhw.20190808121627.22">def create_shortcut_to_env_terminal(self, shortcut_name=None, shortcut_directory=None, desktop=True, menu=True):
+<t tx="mhw.20190808131212.43">def create_shortcut_to_env_terminal(self, shortcut_name=None, shortcut_directory=None, desktop=True, menu=True):
     """
     Creates shortcuts for console (terminal) that
     has already activated the environment we are installing to
@@ -576,16 +602,16 @@ def _ascii_name(name):
 
 # should be overridden
 </t>
-<t tx="mhw.20190808121627.23">def _create_shortcut_to_dir(self, shortcut_name, target_path, shortcut_directory):
+<t tx="mhw.20190808131212.44">def _create_shortcut_to_dir(self, shortcut_name, target_path, shortcut_directory):
     raise ShortcutError("_create_shortcut_to_dir needs overriding")
 
 # should be overridden
 </t>
-<t tx="mhw.20190808121627.24">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory):
+<t tx="mhw.20190808131212.45">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory):
     raise ShortcutError("_create_shortcut_file needs overriding")
 
 </t>
-<t tx="mhw.20190808121627.25">def makedirs(self, *args):
+<t tx="mhw.20190808131212.46">def makedirs(self, *args):
     """
     Recursively creates dirs if they don't exist.
     Utilizes ``self.raise_errors`` and ``self.error_log``.
@@ -608,7 +634,7 @@ def _ascii_name(name):
     return False if ('error' in ret) else True
 
 </t>
-<t tx="mhw.20190808121627.26">def find_target(self, target):
+<t tx="mhw.20190808131212.47">def find_target(self, target):
     """
     Finds a file path for a target application.
     Single-worded targets like ``'app'`` are always searched in the PATH.
@@ -638,7 +664,7 @@ def _ascii_name(name):
     return None
 
 </t>
-<t tx="mhw.20190808121627.27">def search_for_target(self, target):
+<t tx="mhw.20190808131212.48">def search_for_target(self, target):
     """
     Searches for a target application.
 
@@ -676,160 +702,218 @@ def _ascii_name(name):
 
 # needs overriding
 </t>
-<t tx="mhw.20190808121627.28">def _is_file_the_target(self, target, file_name, file_path):
+<t tx="mhw.20190808131212.49">def _is_file_the_target(self, target, file_name, file_path):
     raise ShortcutError("_is_file_the_target needs overriding")
 
 # needs overriding
 </t>
-<t tx="mhw.20190808121627.29">@staticmethod
+<t tx="mhw.20190808131212.50">@staticmethod
 def _get_paths():
     raise ShortcutError("_get_paths needs overriding")
 </t>
-<t tx="mhw.20190808121627.3">class ShortCutter(object):
+<t tx="mhw.20190808135317.35">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory):
     """
-    Creates applicaton shortcuts for Windows, MacOS and Linux operating systems.
-
-    To create desktop and menu shortcuts to ``python``::
-
-        from shortcutter import ShortCutter
-        s = ShortCutter()
-        s.create_desktop_shortcut("python")
-        s.create_menu_shortcut("python")
-
-    Attributes:
-    -----------
-    raise_errors : bool=False
-        Whether to raise exceptions or skip errors and continue.
-    error_log : object=None
-        File object where to write errors when ``raise_errors=False``.
-        Default is None - do not write errors.
-        Can also be ``sys.stderr`` or ``io.StringIO()``.
-    desktop_folder : str
-        Directory used when creating desktop shortcuts.
-    menu_folder : str
-        Directory used when creating menu shortcuts.
-    bin_folder_pyexe : str
-        ``Scripts`` or ``bin`` dir path. Simply closest to python executable path.
-    bin_folder_shcut : str or None
-        ``Scripts`` or ``bin`` dir path where shortcutter executable was installed.
-    local_root : str
-        Root directory path of the current python environment / installation.
-        Derived from python executable path.
-    activate : bool=True
-        Whether to create shortcuts that automatically activate
-        conda environment / virtual environment.
-    exists : bool=True
-        Whether the target should exist or not.
-        If not then add ``/`` (``\\`` on Windows) at the end of the path to get dir shortcut.
-    activate_args : tuple (str or None, str or None)
-        First is the activate script full path (or None if it's wasn't found) - conda's or venv's.
-        Second is the env argument of the activate script (or None if not needed).
+    Creates a Linux shortcut file to folder.
     """
+    return self._create_shortcut_linux(shortcut_name, target_path, shortcut_directory,
+                                       '[Desktop Entry]\n' +
+                                       'Name={}\n'.format(shortcut_name) +
+                                       'Type=Application\n' +
+                                       'Exec="{}" %F\n'.format(target_path) +
+                                       'Terminal=true\n')
 
+</t>
+<t tx="mhw.20190808135317.45">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory):
+    """
+    Creates a MacOS app which opens an executable via the terminal
+    """
+    return create_shortcut(shortcut_name, target_path, shortcut_directory,
+                           'tell application "Terminal"\n' +
+                           'activate\n' +
+                           'do script "{}"\n'.format(target_path) +
+                           'end tell\n')
+</t>
+<t tx="mhw.20190808135317.46">import sys
+import site
+import os
+from os import path as p
+
+# import win32com
+# this often fails due to unable to find DLLs
+# so dynamically change the path if required
+try:
+    import win32com
+except ImportError as e:
+    if "DLL load failed:" in str(e):
+        path = p.join(p.split(sys.executable)[0], "Lib", "site-packages", "pywin32_system32")
+        os.environ["PATH"] = os.environ["PATH"] + ";" + path
+        try:
+            import win32com
+        except ImportError as ee:
+            dll = os.listdir(path)
+            dll = [p.join(path, _) for _ in dll if "dll" in _]
+            raise ImportError("{}\n Failed to import win32com, due to missing DLL:\n".format(ee) + "\n".join(dll))
+    else:
+        raise e
+
+from win32com.client import Dispatch
+from .base import ShortCutter
+
+shell = Dispatch('WScript.Shell')
+
+ACTIVATE = r"""@echo off
+set PYTHONNOUSERSITE=1
+call "{activate}"
+{call}"{executable}" %*
+call "{bin}\deactivate.bat"
+"""
+
+ACTIVATE_PROMPT = """@echo off
+set "PATH={bin};%PATH%"
+set PYTHONNOUSERSITE=1
+call "{activate}"
+set "u=chcp 65001 &amp;&amp; set PYTHONIOENCODING=utf-8"
+set "a=chcp 1252 &amp;&amp; set PYTHONIOENCODING="
+set "b=set LANG=C.UTF-8 &amp;&amp; set PYTHONIOENCODING=utf-8 &amp;&amp; "%PROGRAMFILES%\Git\git-bash.exe""
+cd /d %USERPROFILE%
+cmd /k
+"""
+
+FOLDER_SHORTCUT = r"""@echo off
+if exist "{path}\" (
+    cd /d "{path}"
+    start .
+) else (
+    echo Folder doesn't exist: "{path}"
+    pause
+)
+"""
+
+
+</t>
+<t tx="mhw.20190808135317.47">class ShortCutterWindows(ShortCutter):
     @others
 </t>
-<t tx="mhw.20190808121627.4">def __init__(self, raise_errors=False, error_log=None, activate=True, exists=True):
-    """
-    Creates ShortCutter.
+<t tx="mhw.20190808135317.48">def _set_win_vars(self):
+    self._executable_file_extensions = [ext.upper() for ext in os.environ['PATHEXT'].split(os.pathsep)]
 
-    Parameters
-    ----------
-    raise_errors : bool=False
-        Whether to raise exceptions or skip errors and continue.
-    error_log : object=None
-        File object where to write errors when ``raise_errors=False``.
-        Default is None - do not write errors.
-        Can also be ``sys.stderr`` or ``io.StringIO()``.
-    activate : bool=True
-        Whether to create shortcuts that automatically activate
-        conda environment / virtual environment.
-    exists : bool=True
-        Whether the target should exist or not.
-        If not then add ``/`` (``\\`` on Windows) at the end of the path to get dir shortcut.
-    """
-    self._set_win_vars()  # important on Windows
-
-    self.raise_errors = raise_errors
-    self.error_log = error_log
-    self.activate = activate
-    self.exists = exists
-    self.desktop_folder = self._get_desktop_folder()
-    self.menu_folder = self._get_menu_folder()
-    self.bin_folder_pyexe = self._get_bin_folder_pyexe()
-    shortcutter = self.find_target('shortcutter')
-    self.bin_folder_shcut = p.dirname(shortcutter) if shortcutter else self.bin_folder_pyexe
-    self.local_root = sys.prefix
-    self._ACTIVATE, self._ACTIVATE_PROMPT = self._get_activate_wrapper_templates()
-
-    self.activate_args = self._get_activate_args()  # should be run the last
-
-# might be overridden if needed
 </t>
-<t tx="mhw.20190808121627.5">def _set_win_vars(self):
+<t tx="mhw.20190808135317.49">@staticmethod
+def _get_desktop_folder():
+    return shell.SpecialFolders("Desktop")
+
+</t>
+<t tx="mhw.20190808135317.50">@staticmethod
+def _get_menu_folder():
+    return shell.SpecialFolders("Programs")
+
+</t>
+<t tx="mhw.20190808135317.51">@staticmethod
+def _get_bin_folder_pyexe():
+    return p.join(sys.prefix, "Scripts")
+
+</t>
+<t tx="mhw.20190808135317.52">@staticmethod
+def _get_activate_wrapper_templates():
+    return ACTIVATE, ACTIVATE_PROMPT
+
+</t>
+<t tx="mhw.20190808135317.53">@staticmethod
+def _make_executable(file_path):
     pass
 
-# should be overridden
 </t>
-<t tx="mhw.20190808121627.6">@staticmethod
-def _get_desktop_folder():
-    raise ShortcutError("_get_desktop_folder needs overriding")
+<t tx="mhw.20190808135317.54">def _create_shortcut_to_dir(self, shortcut_name, target_path, shortcut_directory):
+    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon, True)
 
-# should be overridden
 </t>
-<t tx="mhw.20190808121627.7">@staticmethod
-def _get_menu_folder():
-    raise ShortcutError("_get_menu_folder needs overriding")
+<t tx="mhw.20190808135317.55">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory, icon):
+    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon)
 
-# should be overridden
 </t>
-<t tx="mhw.20190808121627.8">@staticmethod
-def _get_bin_folder_pyexe():
-    raise ShortcutError("_get_bin_folder_pyexe needs overriding")
+<t tx="mhw.20190808135317.56">def _create_shortcut_win(self, shortcut_name, target_path, shortcut_directory, folder=False, icon=None):
+    """
+    Creates a Windows shortcut file.
 
-# should be overridden
-</t>
-<t tx="mhw.20190808121627.9">@staticmethod
-def _get_activate_wrapper_templates():
-    raise ShortcutError("_get_activate_wrapper_templates needs overriding")
+    Returns tuple (shortcut_name, target_path, shortcut_file_path)
+    """
+    print('_create_shortcut_win(): %s' % icon)
+    if not folder:
+        shortcut_target_path = target_path
+        working_directory = p.dirname(target_path)
+        ext = p.splitext(target_path)[1].upper()
+        if not icon:
+            if ext in self._executable_file_extensions:
+                icon = r'%SystemRoot%\System32\imageres.dll,11'
+    
+    elif not p.isdir(target_path):
+        # create a bat script that opens the folder:
+        
+        wrapper_path = p.join(self.bin_folder_shcut, self.ba('shortcutter__dir__' + self._path_to_name(target_path)))
+        with open(wrapper_path, 'w') as f:
+            f.write(FOLDER_SHORTCUT.format(path=target_path))
+        shortcut_target_path = wrapper_path
+        working_directory = self.bin_folder_shcut
+        icon = r'%SystemRoot%\explorer.exe,0'
 
-# should be overridden
+    else:
+        shortcut_target_path = target_path
+        working_directory = target_path
+
+    shortcut_file_path = p.join(shortcut_directory, shortcut_name + ".lnk")
+    shortcut = shell.CreateShortCut(shortcut_file_path)
+    shortcut.Targetpath = shortcut_target_path
+    shortcut.WorkingDirectory = working_directory
+    shortcut.Description = "Shortcut to" + p.basename(target_path)
+    if icon:
+        shortcut.IconLocation = icon
+        print('//_create_shortcut_win %s' % icon)
+    shortcut.save()
+
+    return shortcut_name, target_path, shortcut_file_path
 </t>
-<t tx="mhw.20190808121955.1">@nosearch
+<t tx="mhw.20190808135317.57">def _is_file_the_target(self, target, file_name, file_path):
+    match = False
+    # does the target have an extension?
+    target_ext = p.splitext(target)[1]
+    # if so, do a direct match
+    if target_ext:
+        if file_name.lower() == target.lower():
+            match = True
+    # no extension, compare the target to the file_name for each executable file extension
+    else:
+        for extension in self._executable_file_extensions:
+            if file_name.lower() == (target + extension).lower():
+                match = True
+    return match
+
+</t>
+<t tx="mhw.20190808135317.58">@staticmethod
+def _get_paths():
+    """
+    Gets paths from the PATH environment variable and 
+    prepends `&lt;Python&gt;`, `&lt;Python&gt;\Scripts`, `&lt;Python&gt;\Library\bin` directories.
+
+    Returns a list of paths.
+    """
+    root = p.dirname(sys.executable)
+    user_root = p.dirname(site.USER_SITE)
+    return [root,
+            p.join(root, 'Scripts'),
+            p.join(root, 'Library', 'bin')
+           ] + os.environ['PATH'].split(os.pathsep) + [p.join(user_root, 'Scripts')]
+</t>
+<t tx="mhw.20190808140641.1">@nosearch
 @language python
+
 # flattened, ignore-case, head, body
 
 # found 3 nodes</t>
-<t tx="mhw.20190808122913.15">def create_menu_shortcut(self, target, shortcut_name=None, icon=None):
-    """
-    Creates a menu shortcut to a target.
+<t tx="mhw.20190808141042.1">@nosearch
+@language python
 
-    Parameters
-    ----------
-    target : str
-        The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name 
-        ``my_program``.
-    shortcut_name : str=None
-        Name of the shortcut without extension (``.lnk`` would be appended if needed).
-        If None uses the target filename.
-    icon : str=None
-        Path to icon file
+# flattened, ignore-case, head, body
 
-    Returns
-    -------
-    tuple (str or None, str or None, str or None)
-        (shortcut_name, target_path, shortcut_file_path)
-    """
-    if not p.isdir(self.menu_folder):
-        msg = "Menu folder '{}' not found.".format(self.menu_folder)
-        if self.raise_errors:
-            raise ShortcutNoMenuError(msg)
-        elif self.error_log is not None:
-            self.error_log.write(msg + '\n')
-            return None, None, None
-    else:
-        return self.create_shortcut(target, self.menu_folder, shortcut_name)
-
-</t>
+# found 6 nodes</t>
 </tnodes>
 </leo_file>
