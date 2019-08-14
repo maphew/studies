@@ -72,6 +72,7 @@
 <v t="mhw.20190808135317.55"></v>
 <v t="mhw.20190808135317.56"></v>
 <v t="mhw.20190808131212.37"></v>
+<v t="mhw.20190808131212.42"></v>
 </v>
 <v t="mhw.20190808140641.1"><vh>Found:_create_shortcut_win</vh>
 <v t="mhw.20190808135317.55"></v>
@@ -85,6 +86,12 @@
 <v t="mhw.20190808135317.35"><vh>ShortCutterLinux(ShortCutter)._create_shortcut_file</vh></v>
 <v t="mhw.20190808135317.45"><vh>ShortCutterMacOS(ShortCutterLinux)._create_shortcut_file</vh></v>
 <v t="mhw.20190808135317.55"></v>
+</v>
+<v t="mhw.20190814133901.1"><vh>Found:_safe_create</vh>
+<v t="mhw.20190808131212.42"></v>
+<v t="mhw.20190808131212.41"></v>
+<v t="mhw.20190808131212.43"></v>
+<v t="mhw.20190808131212.46"></v>
 </v>
 </vnodes>
 <tnodes>
@@ -348,7 +355,6 @@ def _make_executable(file_path):
     tuple (str or None, str or None, str or None)
         (shortcut_name, target_path, shortcut_file_path, icon_file_path)
     """
-    print('create_desktop_shortcut() %s' % icon)
     if not p.isdir(self.desktop_folder):
         msg = "Desktop folder '{}' not found.".format(self.desktop_folder)
         if self.raise_errors:
@@ -357,7 +363,7 @@ def _make_executable(file_path):
             self.error_log.write(msg + '\n')
             return None, None, None, None
     else:
-        return self.create_shortcut(target, self.desktop_folder, shortcut_name, icon)
+        return self.create_shortcut(target, self.desktop_folder, shortcut_name, icon=icon)
 
 </t>
 <t tx="mhw.20190808131212.37">def create_menu_shortcut(self, target, shortcut_name=None, icon=None):
@@ -378,8 +384,8 @@ def _make_executable(file_path):
 
     Returns
     -------
-    tuple (str or None, str or None, str or None)
-        (shortcut_name, target_path, shortcut_file_path)
+    tuple (str or None, str or None, str or None, str or None)
+        (shortcut_name, target_path, shortcut_file_path, icon_file_path)
     """
     if not p.isdir(self.menu_folder):
         msg = "Menu folder '{}' not found.".format(self.menu_folder)
@@ -387,9 +393,9 @@ def _make_executable(file_path):
             raise ShortcutNoMenuError(msg)
         elif self.error_log is not None:
             self.error_log.write(msg + '\n')
-            return None, None, None
+            return None, None, None, None
     else:
-        return self.create_shortcut(target, self.menu_folder, shortcut_name)
+        return self.create_shortcut(target, self.menu_folder, shortcut_name, icon=icon)
 
 </t>
 <t tx="mhw.20190808131212.38">@classmethod
@@ -471,13 +477,14 @@ def _ascii_name(name):
     shortcut_name : str=None
         Name of the shortcut without extension (``.lnk`` would be appended if needed).
         If None uses the target filename.
+    icon : str=None
+        File path to icon file
 
     Returns
     -------
-    tuple (str, str, str or None)
-        (shortcut_name, target_path, shortcut_file_path)
+    tuple (str, str, str or None, str or None)
+        (shortcut_name, target_path, shortcut_file_path, icon_file_path)
     """
-    print('create_shortcut() %s' % icon)
     # Set the target path:
     target_path = self.find_target(target)
 
@@ -499,7 +506,6 @@ def _ascii_name(name):
         else:
             # getting the file name and removing the extension:
             shortcut_name = p.splitext(p.basename(target))[0]
-
     # Create shortcut function:
     def create():
         if not target_path:
@@ -523,9 +529,7 @@ def _ascii_name(name):
                                     'Searched `conda` executable in the PATH.')
         # Use simple shortcuts if self.activate=False or we are installing to common python installation:
         return self._create_shortcut_file(shortcut_name, target_path, shortcut_directory, icon)
-
     ret = self._safe_create(create)
-    print('//create_shortcut() %s' % icon)    
     return ret if (ret != 'error') else (shortcut_name, target_path, None)
 
 </t>
@@ -824,12 +828,11 @@ def _make_executable(file_path):
     pass
 
 </t>
-<t tx="mhw.20190808135317.54">def _create_shortcut_to_dir(self, shortcut_name, target_path, shortcut_directory):
-    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon, True)
+<t tx="mhw.20190808135317.54">def _create_shortcut_to_dir(self, shortcut_name, target_path, shortcut_directory, icon):
+    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, True, icon=icon)
 
 </t>
 <t tx="mhw.20190808135317.55">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory, icon):
-    print('_create_shortcut_file(): %s' % icon)
     return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon=icon)
 
 </t>
@@ -839,7 +842,6 @@ def _make_executable(file_path):
 
     Returns tuple (shortcut_name, target_path, shortcut_file_path)
     """
-    print(f'_create_shortcut_win(): {self}, {shortcut_name}, {target_path}, {shortcut_directory}, {folder}, {icon}')
     if not folder:
         shortcut_target_path = target_path
         working_directory = p.dirname(target_path)
@@ -856,7 +858,8 @@ def _make_executable(file_path):
             f.write(FOLDER_SHORTCUT.format(path=target_path))
         shortcut_target_path = wrapper_path
         working_directory = self.bin_folder_shcut
-        icon = r'%SystemRoot%\explorer.exe,0'
+        if not icon:
+            icon = r'%SystemRoot%\explorer.exe,0'
 
     else:
         shortcut_target_path = target_path
@@ -869,7 +872,6 @@ def _make_executable(file_path):
     shortcut.Description = "Shortcut to" + p.basename(target_path)
     if icon:
         shortcut.IconLocation = icon
-        print('//_create_shortcut_win %s' % icon)
     shortcut.save()
 
     return shortcut_name, target_path, shortcut_file_path
@@ -917,5 +919,11 @@ def _get_paths():
 # flattened, ignore-case, head, body
 
 # found 6 nodes</t>
+<t tx="mhw.20190814133901.1">@nosearch
+@language python
+
+# flattened, ignore-case, head, body
+
+# found 4 nodes</t>
 </tnodes>
 </leo_file>
