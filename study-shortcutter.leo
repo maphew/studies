@@ -67,9 +67,10 @@
 </v>
 </v>
 <v t="mhw.20190808090216.1"><vh>modified</vh>
-<v t="mhw.20190808131212.41"></v>
-<v t="mhw.20190808135317.56"></v>
 <v t="mhw.20190808131212.36"></v>
+<v t="mhw.20190808131212.41"></v>
+<v t="mhw.20190808135317.55"></v>
+<v t="mhw.20190808135317.56"></v>
 <v t="mhw.20190808131212.37"></v>
 </v>
 <v t="mhw.20190808140641.1"><vh>Found:_create_shortcut_win</vh>
@@ -345,7 +346,7 @@ def _make_executable(file_path):
     Returns
     -------
     tuple (str or None, str or None, str or None)
-        (shortcut_name, target_path, shortcut_file_path)
+        (shortcut_name, target_path, shortcut_file_path, icon_file_path)
     """
     print('create_desktop_shortcut() %s' % icon)
     if not p.isdir(self.desktop_folder):
@@ -354,7 +355,7 @@ def _make_executable(file_path):
             raise ShortcutNoDesktopError(msg)
         elif self.error_log is not None:
             self.error_log.write(msg + '\n')
-            return None, None, None
+            return None, None, None, None
     else:
         return self.create_shortcut(target, self.desktop_folder, shortcut_name, icon)
 
@@ -828,7 +829,8 @@ def _make_executable(file_path):
 
 </t>
 <t tx="mhw.20190808135317.55">def _create_shortcut_file(self, shortcut_name, target_path, shortcut_directory, icon):
-    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon)
+    print('_create_shortcut_file(): %s' % icon)
+    return self._create_shortcut_win(shortcut_name, target_path, shortcut_directory, icon=icon)
 
 </t>
 <t tx="mhw.20190808135317.56">def _create_shortcut_win(self, shortcut_name, target_path, shortcut_directory, folder=False, icon=None):
@@ -837,7 +839,7 @@ def _make_executable(file_path):
 
     Returns tuple (shortcut_name, target_path, shortcut_file_path)
     """
-    print('_create_shortcut_win(): %s' % icon)
+    print(f'_create_shortcut_win(): {self}, {shortcut_name}, {target_path}, {shortcut_directory}, {folder}, {icon}')
     if not folder:
         shortcut_target_path = target_path
         working_directory = p.dirname(target_path)
