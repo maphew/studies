@@ -73,6 +73,7 @@
 <v t="mhw.20190808135317.56"></v>
 <v t="mhw.20190808131212.37"></v>
 <v t="mhw.20190808131212.42"></v>
+<v t="mhw.20190808131212.43"></v>
 </v>
 <v t="mhw.20190808140641.1"><vh>Found:_create_shortcut_win</vh>
 <v t="mhw.20190808135317.55"></v>
@@ -92,6 +93,10 @@
 <v t="mhw.20190808131212.41"></v>
 <v t="mhw.20190808131212.43"></v>
 <v t="mhw.20190808131212.46"></v>
+</v>
+<v t="mhw.20190815130612.1"><vh>Found:create_shortcut_to_env_terminal</vh>
+<v t="mhw.20190815124416.3"><vh>main (__init__.py)</vh></v>
+<v t="mhw.20190808131212.43"></v>
 </v>
 </vnodes>
 <tnodes>
@@ -285,7 +290,7 @@ def _make_executable(file_path):
         #   `&lt;conda_root&gt;/envs/&lt;local_root_basename&gt;`
         ddot = p.dirname(self.local_root)
         activate = self._check_if_conda_root(p.dirname(ddot))
-        if (p.basename(ddot) == 'envs') and activate: 
+        if (p.basename(ddot) == 'envs') and activate:
             return activate, p.basename(self.local_root)
 
         # check if we are running pip via `conda env create -f env.yaml`
@@ -312,7 +317,7 @@ def _make_executable(file_path):
             return activate, None
 
     return None, None
- 
+
 </t>
 <t tx="mhw.20190808131212.35">def _check_if_conda_root(self, path):
     """
@@ -342,7 +347,7 @@ def _make_executable(file_path):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name 
+        file path ``/path/to/my_program`` or a simple application name
         ``my_program``.
     shortcut_name : str=None
         Name of the shortcut without extension (``.lnk`` would be appended if needed).
@@ -374,7 +379,7 @@ def _make_executable(file_path):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name 
+        file path ``/path/to/my_program`` or a simple application name
         ``my_program``.
     shortcut_name : str=None
         Name of the shortcut without extension (``.lnk`` would be appended if needed).
@@ -418,10 +423,10 @@ def _ascii_name(name):
 <t tx="mhw.20190808131212.40">def _create_wrapped_shortcut(self, shortcut_name, target_path, shortcut_directory, activate_args=None, icon=None):
     """
     Creates shell script wrapper for shortcut with activation.
-    
+
     Providing activate_args optional argument switches to creation
     of shortcut to terminal with activated environment.
-    
+
     Returns a tuple of (shortcut_name, target_path, shortcut_file_path)
     """
     if activate_args is None:
@@ -470,7 +475,7 @@ def _ascii_name(name):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name 
+        file path ``/path/to/my_program`` or a simple application name
         ``my_program``.
     shortcut_directory : str
         The directory path where the shortcut should be created.
@@ -575,6 +580,10 @@ def _ascii_name(name):
     bool
         True if all operations were successful, False otherwise.
     """
+    # Link shortcuts
+    global linkd
+    linkd={}
+
     activate, env = self.activate_args
     if not activate:
         return
@@ -603,6 +612,12 @@ def _ascii_name(name):
                     ret.append(self._safe_create(
                         lambda: self._create_wrapped_shortcut(name, None, path, (activate, env))
                     ))
+    
+    # link shortcuts dict: {Name: [Link target path, Path to link file]}
+    for i in ret:
+        linkd[i[0]] = [i[1],i[2]]
+    print('--- debug: linkd: %s' % linkd)
+    
     return False if ('error' in ret) else True
 
 # should be overridden
@@ -620,7 +635,7 @@ def _ascii_name(name):
     """
     Recursively creates dirs if they don't exist.
     Utilizes ``self.raise_errors`` and ``self.error_log``.
-    
+
     Parameters
     ----------
     \*args : str
@@ -649,7 +664,7 @@ def _ascii_name(name):
     ----------
     target : str
         The target to find, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name 
+        file path ``/path/to/my_program`` or a simple application name
         ``my_program``.
 
     Returns
@@ -925,5 +940,76 @@ def _get_paths():
 # flattened, ignore-case, head, body
 
 # found 4 nodes</t>
+<t tx="mhw.20190815124416.3">def main():
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description="Automatic shortcut creator." +
+                                        " Shortcuts auto-activate their environments by default.")
+    parser.add_argument("target", nargs='?', default=None,
+                        help="The target executable to create Desktop and Menu shortcuts.")
+    parser.add_argument("-d", "--desktop", action="store_true", help="Only create a desktop shortcut.")
+    parser.add_argument("-m", "--menu", action="store_true", help="Only create a menu shortcut.")
+    parser.add_argument("-n", "--name", nargs='?', default=None, help="Name of the shortcut without extension (autoname otherwise).")
+    parser.add_argument("-s", "--simple", action="store_true", help="Create simple shortcut without activate wrapper.")
+    parser.add_argument("-t", "--terminal", action="store_true",
+                        help="Create shortcut to environment with shortcutter " +
+                             "(plus shortcut to root environment in case of conda).")
+    args = parser.parse_args()
+
+    create_desktop = args.desktop
+    create_menu = args.menu
+    activate = not args.simple
+    name = args.name if args.name else None
+
+    if not args.target and not args.terminal:
+        print('Shortcutter needs target or --terminal arguments to work.')
+        return
+
+    # if desktop or menu hasnt been specified create both (i.e. the default)
+    if not create_desktop and not create_menu:
+        create_desktop = True
+        create_menu = True
+
+    sc = ShortCutter(activate=activate, error_log=sys.stdout)
+
+    target_path = sc.find_target(args.target)
+    if target_path or args.terminal:
+
+        desktop_created = False
+        if create_desktop:
+            if args.terminal:
+                desktop_created = sc.create_shortcut_to_env_terminal(name, menu=False)
+            else:
+                ret = sc.create_desktop_shortcut(target_path, name)
+                desktop_created = bool(ret[2])  # shortcut_path = ret[2]
+            if not desktop_created:
+                print("Failed to create desktop shortcut.")
+
+        menu_created = False
+        if create_menu:
+            if args.terminal:
+                menu_created = sc.create_shortcut_to_env_terminal(name, desktop=False)
+            else:
+                ret = sc.create_menu_shortcut(target_path, name)
+                menu_created = bool(ret[2])  # shortcut_path = ret[2]
+            if not menu_created:
+                print("Failed to create menu shortcut.")
+
+        msg = "created for '{}'.".format(args.target if not args.terminal else 'terminal at environment')
+        if desktop_created and menu_created:
+            print('Desktop and menu shortcuts were ' + msg)
+        elif desktop_created and not menu_created:
+            print('Desktop shortcut was ' + msg)
+        elif not desktop_created and menu_created:
+            print('Menu shortcut was ' + msg)
+    else:
+        print("Shortcut creation failed: unable to find '{}'.".format(args.target))
+</t>
+<t tx="mhw.20190815130612.1">@nosearch
+@language python
+
+# flattened, ignore-case, head, body
+
+# found 2 nodes</t>
 </tnodes>
 </leo_file>
