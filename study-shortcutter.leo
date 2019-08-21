@@ -290,7 +290,7 @@ def _make_executable(file_path):
         #   `&lt;conda_root&gt;/envs/&lt;local_root_basename&gt;`
         ddot = p.dirname(self.local_root)
         activate = self._check_if_conda_root(p.dirname(ddot))
-        if (p.basename(ddot) == 'envs') and activate:
+        if (p.basename(ddot) == 'envs') and activate: 
             return activate, p.basename(self.local_root)
 
         # check if we are running pip via `conda env create -f env.yaml`
@@ -317,7 +317,7 @@ def _make_executable(file_path):
             return activate, None
 
     return None, None
-
+ 
 </t>
 <t tx="mhw.20190808131212.35">def _check_if_conda_root(self, path):
     """
@@ -347,7 +347,7 @@ def _make_executable(file_path):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name
+        file path ``/path/to/my_program`` or a simple application name 
         ``my_program``.
     shortcut_name : str=None
         Name of the shortcut without extension (``.lnk`` would be appended if needed).
@@ -379,7 +379,7 @@ def _make_executable(file_path):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name
+        file path ``/path/to/my_program`` or a simple application name 
         ``my_program``.
     shortcut_name : str=None
         Name of the shortcut without extension (``.lnk`` would be appended if needed).
@@ -423,10 +423,10 @@ def _ascii_name(name):
 <t tx="mhw.20190808131212.40">def _create_wrapped_shortcut(self, shortcut_name, target_path, shortcut_directory, activate_args=None, icon=None):
     """
     Creates shell script wrapper for shortcut with activation.
-
+    
     Providing activate_args optional argument switches to creation
     of shortcut to terminal with activated environment.
-
+    
     Returns a tuple of (shortcut_name, target_path, shortcut_file_path)
     """
     if activate_args is None:
@@ -475,7 +475,7 @@ def _ascii_name(name):
     ----------
     target : str
         The target to create a shortcut for, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name
+        file path ``/path/to/my_program`` or a simple application name 
         ``my_program``.
     shortcut_directory : str
         The directory path where the shortcut should be created.
@@ -580,10 +580,6 @@ def _ascii_name(name):
     bool
         True if all operations were successful, False otherwise.
     """
-    # Link shortcuts
-    global linkd
-    linkd={}
-
     activate, env = self.activate_args
     if not activate:
         return
@@ -612,12 +608,6 @@ def _ascii_name(name):
                     ret.append(self._safe_create(
                         lambda: self._create_wrapped_shortcut(name, None, path, (activate, env))
                     ))
-    
-    # link shortcuts dict: {Name: [Link target path, Path to link file]}
-    for i in ret:
-        linkd[i[0]] = [i[1],i[2]]
-    print('--- debug: linkd: %s' % linkd)
-    
     return False if ('error' in ret) else True
 
 # should be overridden
@@ -635,7 +625,7 @@ def _ascii_name(name):
     """
     Recursively creates dirs if they don't exist.
     Utilizes ``self.raise_errors`` and ``self.error_log``.
-
+    
     Parameters
     ----------
     \*args : str
@@ -664,7 +654,7 @@ def _ascii_name(name):
     ----------
     target : str
         The target to find, it can be a fully qualified
-        file path ``/path/to/my_program`` or a simple application name
+        file path ``/path/to/my_program`` or a simple application name 
         ``my_program``.
 
     Returns
@@ -875,6 +865,8 @@ def _make_executable(file_path):
         working_directory = self.bin_folder_shcut
         if not icon:
             icon = r'%SystemRoot%\explorer.exe,0'
+        icon = r'%SystemRoot%\System32\imageres.dll,5323' # cmd prompt ico
+            
 
     else:
         shortcut_target_path = target_path
