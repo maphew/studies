@@ -98,8 +98,83 @@
 <v t="mhw.20190815124416.3"><vh>main (__init__.py)</vh></v>
 <v t="mhw.20190808131212.43"></v>
 </v>
+<v t="lkj.20190824070405.1"><vh>Found:create_shortcut_to_env_terminal</vh>
+<v t="lkj.20190824060123.2"><vh>main (__init__.py)</vh></v>
+<v t="mhw.20190808131212.43"></v>
+</v>
 </vnodes>
 <tnodes>
+<t tx="lkj.20190824060123.2">def main():
+    from argparse import ArgumentParser
+
+    parser = ArgumentParser(description="Automatic shortcut creator." +
+                                        " Shortcuts auto-activate their environments by default.")
+    parser.add_argument("target", nargs='?', default=None,
+                        help="The target executable to create Desktop and Menu shortcuts.")
+    parser.add_argument("-d", "--desktop", action="store_true", help="Only create a desktop shortcut.")
+    parser.add_argument("-m", "--menu", action="store_true", help="Only create a menu shortcut.")
+    parser.add_argument("-n", "--name", nargs='?', default=None, help="Name of the shortcut without extension (autoname otherwise).")
+    parser.add_argument("-s", "--simple", action="store_true", help="Create simple shortcut without activate wrapper.")
+    parser.add_argument("-t", "--terminal", action="store_true",
+                        help="Create shortcut to environment with shortcutter " +
+                             "(plus shortcut to root environment in case of conda).")
+    args = parser.parse_args()
+
+    create_desktop = args.desktop
+    create_menu = args.menu
+    activate = not args.simple
+    name = args.name if args.name else None
+
+    if not args.target and not args.terminal:
+        print('Shortcutter needs target or --terminal arguments to work.')
+        return
+
+    # if desktop or menu hasnt been specified create both (i.e. the default)
+    if not create_desktop and not create_menu:
+        create_desktop = True
+        create_menu = True
+
+    sc = ShortCutter(activate=activate, error_log=sys.stdout)
+
+    target_path = sc.find_target(args.target)
+    if target_path or args.terminal:
+
+        desktop_created = False
+        if create_desktop:
+            if args.terminal:
+                desktop_created = sc.create_shortcut_to_env_terminal(name, menu=False)
+            else:
+                ret = sc.create_desktop_shortcut(target_path, name)
+                desktop_created = bool(ret[2])  # shortcut_path = ret[2]
+            if not desktop_created:
+                print("Failed to create desktop shortcut.")
+
+        menu_created = False
+        if create_menu:
+            if args.terminal:
+                menu_created = sc.create_shortcut_to_env_terminal(name, desktop=False)
+            else:
+                ret = sc.create_menu_shortcut(target_path, name)
+                menu_created = bool(ret[2])  # shortcut_path = ret[2]
+            if not menu_created:
+                print("Failed to create menu shortcut.")
+
+        msg = "created for '{}'.".format(args.target if not args.terminal else 'terminal at environment')
+        if desktop_created and menu_created:
+            print('Desktop and menu shortcuts were ' + msg)
+        elif desktop_created and not menu_created:
+            print('Desktop shortcut was ' + msg)
+        elif not desktop_created and menu_created:
+            print('Menu shortcut was ' + msg)
+    else:
+        print("Shortcut creation failed: unable to find '{}'.".format(args.target))
+</t>
+<t tx="lkj.20190824070405.1">@nosearch
+@language python
+
+# flattened, ignore-case, head, body
+
+# found 2 nodes</t>
 <t tx="mhw.20190808084549.2">Easy cross-platform creation of shortcuts supporting virtual and Anaconda environments
 
 Upstream: https://github.com/kiwi0fruit/shortcutter
@@ -577,8 +652,8 @@ def _ascii_name(name):
 
     Returns
     -------
-    bool
-        True if all operations were successful, False otherwise.
+     tuple (str, str, str or None)
+        (shortcut_name, target_path, shortcut_file_path)   
     """
     activate, env = self.activate_args
     if not activate:
@@ -853,11 +928,14 @@ def _make_executable(file_path):
         ext = p.splitext(target_path)[1].upper()
         if not icon:
             if ext in self._executable_file_extensions:
-                icon = r'%SystemRoot%\System32\imageres.dll,11'
-    
+               icon = r'%SystemRoot%\System32\imageres.dll,11'
+
+    if shortcut_name.lower().startswith('terminal'):
+        icon = r'%SystemRoot%\System32\cmd.exe,0'
+
     elif not p.isdir(target_path):
         # create a bat script that opens the folder:
-        
+
         wrapper_path = p.join(self.bin_folder_shcut, self.ba('shortcutter__dir__' + self._path_to_name(target_path)))
         with open(wrapper_path, 'w') as f:
             f.write(FOLDER_SHORTCUT.format(path=target_path))
@@ -865,8 +943,6 @@ def _make_executable(file_path):
         working_directory = self.bin_folder_shcut
         if not icon:
             icon = r'%SystemRoot%\explorer.exe,0'
-        icon = r'%SystemRoot%\System32\imageres.dll,5323' # cmd prompt ico
-            
 
     else:
         shortcut_target_path = target_path
@@ -876,12 +952,13 @@ def _make_executable(file_path):
     shortcut = shell.CreateShortCut(shortcut_file_path)
     shortcut.Targetpath = shortcut_target_path
     shortcut.WorkingDirectory = working_directory
-    shortcut.Description = "Shortcut to" + p.basename(target_path)
+    shortcut.Description = "Shortcut to " + p.basename(target_path)
     if icon:
         shortcut.IconLocation = icon
     shortcut.save()
 
     return shortcut_name, target_path, shortcut_file_path
+
 </t>
 <t tx="mhw.20190808135317.57">def _is_file_the_target(self, target, file_name, file_path):
     match = False
@@ -902,7 +979,7 @@ def _make_executable(file_path):
 <t tx="mhw.20190808135317.58">@staticmethod
 def _get_paths():
     """
-    Gets paths from the PATH environment variable and 
+    Gets paths from the PATH environment variable and
     prepends `&lt;Python&gt;`, `&lt;Python&gt;\Scripts`, `&lt;Python&gt;\Library\bin` directories.
 
     Returns a list of paths.
