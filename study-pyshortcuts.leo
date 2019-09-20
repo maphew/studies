@@ -47,7 +47,8 @@
 <v t="lkj.20190915160127.2"><vh>@clean windows.py</vh>
 <v t="lkj.20190915160403.1"><vh>Declarations (windows.py)</vh></v>
 <v t="lkj.20190915160403.2"><vh>get_exe_types (windows.py)</vh></v>
-<v t="lkj.20190915160403.3"><vh>get_folders (windows.py)</vh></v>
+<v t="lkj.20190915160403.3"><vh>old get_folders (windows.py)</vh></v>
+<v t="lkj.20190919214201.1"><vh>get_folders (windows.py)</vh></v>
 <v t="lkj.20190915160403.4"><vh>make_shortcut (windows.py)</vh></v>
 </v>
 <v t="lkj.20190915160127.1"><vh>@clean wxgui.py</vh>
@@ -74,10 +75,33 @@
 </v>
 </v>
 <v t="lkj.20190915160149.1"><vh>working on</vh>
+<v t="lkj.20190915160228.1"></v>
+<v t="lkj.20190919214201.1"></v>
 <v t="lkj.20190915160754.1"><vh>shortcut.py - filtered</vh>
 <v t="lkj.20190915160358.1"></v>
 <v t="lkj.20190915160358.3"></v>
 </v>
+</v>
+<v t="lkj.20190919213126.1"><vh>Found:make_shortcut</vh>
+<v t="lkj.20190915160228.1"></v>
+<v t="lkj.20190915160314.4"></v>
+<v t="lkj.20190915160354.5"></v>
+<v t="lkj.20190915160403.4"></v>
+</v>
+<v t="lkj.20190919213421.1"><vh>Found:homedir</vh>
+<v t="lkj.20190915160354.1"></v>
+<v t="lkj.20190915160358.1"></v>
+<v t="lkj.20190915160403.1"></v>
+<v t="lkj.20190915160400.4"></v>
+<v t="lkj.20190915160354.5"></v>
+<v t="lkj.20190915160403.4"></v>
+<v t="lkj.20190915160358.4"></v>
+<v t="lkj.20190915160400.3"></v>
+</v>
+<v t="lkj.20190919235058.1"><vh>Found:f'</vh>
+<v t="lkj.20190915160403.4"></v>
+<v t="lkj.20190915160358.4"></v>
+<v t="lkj.20190915160228.2"></v>
 </v>
 </vnodes>
 <tnodes>
@@ -147,13 +171,13 @@ from .utils import platform
 
 make_shortcut = None
 if platform.startswith('win'):
-    from .windows import make_shortcut
+    from .windows import make_shortcut, get_folders
 
 elif platform.startswith('darwin'):
     from .darwin import make_shortcut
 
 elif platform.startswith('linux'):
-    from .linux import make_shortcut
+    from .linux import make_shortcut, get_folders
 
 try:
     import wx
@@ -219,11 +243,8 @@ from __future__ import print_function
 import os
 import sys
 import shutil
-from collections import namedtuple
 
 from .shortcut import Shortcut
-from .utils import get_homedir
-
 
 </t>
 <t tx="lkj.20190915160314.2">def fix_anacondapy_pythonw(fname):
@@ -243,21 +264,8 @@ from .utils import get_homedir
         fh.write('%s\n' % firstline)
         fh.write("".join(lines[1:]))
         fh.close()
-
 </t>
-<t tx="lkj.20190915160314.3">def get_folders():
-    """Return named tuple of Home, Desktop and StartMenu paths.
-
-        folders = get_folders()
-        print("Home, Desktop, StartMenu ",
-            folders.home, folders.desktop, folders.startmenu)
-    """
-    nt = namedtuple("folders", "home desktop startmenu")
-    folders = nt(get_homedir(),
-                os.path.join(get_homedir(), "Desktop"),
-                None)
-    return folders
-
+<t tx="lkj.20190915160314.3">
 </t>
 <t tx="lkj.20190915160314.4">def make_shortcut(script, name=None, description=None, terminal=True,
                   folder=None, icon=None):
@@ -352,6 +360,7 @@ import os
 import sys
 from collections import namedtuple
 
+
 from .shortcut import Shortcut
 from .utils import get_homedir
 
@@ -364,22 +373,16 @@ Icon={icon:s}
 Exec={exe:s} {script:s} {args:s}
 """
 
-</t>
-<t tx="lkj.20190915160354.2">def get_folders():
-    """Return named tuple of Home, Desktop and StartMenu paths.
+def get_folders():
+    """Return named tuple of Home, Desktop and Startmenu paths.
 
-        folders = get_nix_folders()
+        folders = get_folders()
         print("Home, Desktop, StartMenu ",
             folders.home, folders.desktop, folders.startmenu)
     """
-    nt = namedtuple("folders", "home desktop startmenu")
-    folders = nt(get_homedir(), get_linux_desktop, get_linux_menu())
-    return folders
-
-</t>
-<t tx="lkj.20190915160354.3">def get_linux_desktop():
     homedir = get_homedir()
-    desktop = dest = os.path.join(homedir, 'Desktop')
+    desktop = os.path.join(homedir, 'Desktop')
+
     # search for .config/user-dirs.dirs in HOMEDIR
     ud_file = os.path.join(homedir, '.config', 'user-dirs.dirs')
     if os.path.exists(ud_file):
@@ -391,15 +394,19 @@ Exec={exe:s} {script:s} {args:s}
                 line = line.replace('$HOME', homedir)[:-1]
                 key, val = line.split('=')
                 val = val.replace('"', '').replace("'", "")
-        desktop = dest = val
-    return desktop
+        desktop = val
 
+    nt = namedtuple("folders", "home desktop startmenu")
+    folders = nt(
+        homedir,
+        desktop,
+        None
+    )
+    return folders
 </t>
-<t tx="lkj.20190915160354.4">def get_linux_menu():
-    #stub
-    return None
-
-
+<t tx="lkj.20190915160354.2"></t>
+<t tx="lkj.20190915160354.3"></t>
+<t tx="lkj.20190915160354.4">
 
 </t>
 <t tx="lkj.20190915160354.5">def make_shortcut(script, name=None, description=None, terminal=True,
@@ -427,7 +434,7 @@ Exec={exe:s} {script:s} {args:s}
                                script=scut.full_script, args=scut.args,
                                term=term)
     # Desktop
-    desktop = os.path.join(get_homedir(), 'Desktop')
+    desktop = os.path.join(get_homedir(), 'Desktop') # todo: use folders.desktop
     if os.path.exists(desktop):
         with open(scut.target, 'w') as fout:
             fout.write(text)
@@ -445,7 +452,8 @@ Exec={exe:s} {script:s} {args:s}
 <t tx="lkj.20190915160358.1">from __future__ import print_function
 import os
 import sys
-from .utils import platform, get_homedir, get_folders
+from .utils import platform, get_homedir
+
 import six
 
 if six.PY3:
@@ -517,13 +525,19 @@ GOOD_FILECHARS = '_'*len(BAD_FILECHARS)
         self.description = name
 
     # desktop = dest = os.path.join(get_homedir(), 'Desktop')
-    folders = get_folders()
-    desktop = dest = folders.desktop
+    # if folder is not None:
+    #     # if folder var has a value
+    #     #   and it matches the beginning of just created `desktop` var
+    #     #   reassign folder var to be substring of folder var
+    #     #   that is 1 char longer that desktop var
+    #     # reassign `dest` to be desktop path + folder path
+    #     if folder.startswith(desktop):
+    #         folder = folder[len(desktop)+1:]
+    #     dest = os.path.join(desktop, folder)
 
-    if folder is not None:
-        if folder.startswith(desktop):
-            folder = folder[len(desktop)+1:]
-        dest = os.path.join(desktop, folder)
+    #ignore all above, just make dest same as folder:
+    desktop = dest = folder
+    # print(f'---target dest: {dest}') # debug, py36+
 
     if not os.path.exists(dest):
         os.mkdir(dest)
@@ -551,20 +565,14 @@ utilities for pyshortcuts
 """
 import os
 import sys
+from collections import namedtuple
+
 
 platform = sys.platform
 if os.name == "nt":
     platform = "win"
 if platform == "linux2":
     platform = "linux"
-
-
-if platform.startswith('win'):
-    from .windows import get_folders
-elif platform.startswith('darwin'):
-    from .darwin import get_folders
-elif platform.startswith('linux'):
-    from .linux import get_folders
 
 
 </t>
@@ -591,6 +599,50 @@ try:
     import pwd
 except ImportError:
     HAS_PWD = False
+
+## WIP: unix folder paths
+def get_nix_folders():
+    """Return named tuple of Home, Desktop and StartMenu paths.
+
+        folders = get_nix_folders()
+        print("Home, Desktop, StartMenu ",
+            folders.home, folders.desktop, folders.startmenu)
+    """
+    nt = namedtuple("folders", "home desktop startmenu")
+    folders = nt(get_homedir(),
+                os.path.join(get_homedir(), "Desktop"),
+                None)
+    return folders
+
+##
+
+
+def get_win_folders():
+    """Return named tuple of Home, Desktop and Startmenu paths.
+
+        folders = get_win_folders()
+        print("Home, Desktop, StartMenu ",
+            folders.home, folders.desktop, folders.startmenu)
+    """
+    import win32com.client
+
+    shellapp = win32com.client.Dispatch("Shell.Application")
+
+    nt = namedtuple("folders", "home desktop startmenu")
+    folders = nt(
+        shellapp.namespace(40).self.path,
+        shellapp.namespace(11).self.path,
+        shellapp.namespace(0).self.path,
+    )
+    return folders
+    # Windows Special Folders
+    # ID numbers from https://gist.github.com/maphew/47e67b6a99e240f01aced8b6b5678eeb
+    # https://docs.microsoft.com/en-gb/windows/win32/api/shldisp/ne-shldisp-shellspecialfolderconstants#constants
+    #
+    # Start menu: user = 11, all users = 22
+    # Desktop   : user =  0, all users = 25
+    # Profile   : = 40, same as %USERPROFILE%
+
 
 </t>
 <t tx="lkj.20190915160400.4">def get_homedir():
@@ -654,7 +706,6 @@ Create desktop shortcuts for Windows
 from __future__ import print_function
 import os
 import sys
-from collections import namedtuple
 
 from .utils import get_homedir
 from .shortcut import Shortcut
@@ -671,31 +722,20 @@ objshell = win32com.client.Dispatch("Wscript.Shell")
     return exetypes
 
 </t>
-<t tx="lkj.20190915160403.3">def get_folders():
-    """Return named tuple of Home, Desktop and Startmenu paths.
+<t tx="lkj.20190915160403.3"># Windows Special Folders
+# ID numbers from https://gist.github.com/maphew/47e67b6a99e240f01aced8b6b5678eeb
+# https://docs.microsoft.com/en-gb/windows/win32/api/shldisp/ne-shldisp-shellspecialfolderconstants#constants
+#
+# Start menu: user = 11, all users = 22
+# Desktop   : user =  0, all users = 25
+#
+def get_menu_folder():
+    '''Return user Start Menu folder'''
+    return shellapp.namespace(11).self.path
+def get_desktop_folder():
+    '''Return user Desktop folder'''
+    return shellapp.namespace(0).self.path
 
-        folders = get_win_folders()
-        print("Home, Desktop, StartMenu ",
-            folders.home, folders.desktop, folders.startmenu)
-    """
-    # Windows Special Folders
-    # ID numbers from https://gist.github.com/maphew/47e67b6a99e240f01aced8b6b5678eeb
-    # https://docs.microsoft.com/en-gb/windows/win32/api/shldisp/ne-shldisp-shellspecialfolderconstants#constants
-    #
-    # Start menu: user = 11, all users = 22
-    # Desktop   : user =  0, all users = 25
-    # Profile   : = 40, same as %USERPROFILE%
-    import win32com.client
-
-    shellapp = win32com.client.Dispatch("Shell.Application")
-
-    nt = namedtuple("folders", "home desktop startmenu")
-    folders = nt(
-        shellapp.namespace(40).self.path,
-        shellapp.namespace(11).self.path,
-        shellapp.namespace(0).self.path,
-    )
-    return folders
 
 </t>
 <t tx="lkj.20190915160403.4">def make_shortcut(script, name=None, description=None, terminal=True,
@@ -711,11 +751,11 @@ objshell = win32com.client.Dispatch("Wscript.Shell")
     folder      (str or None) folder on Desktop to put shortcut [defaults to Desktop]
     terminal    (True or False) whether to run in a Terminal  [True]
     """
+    homedir = get_homedir()
+    # print(f'--- windows.py:make_shortcut() folder= {folder}') # debug, py36+
 
     scut = Shortcut(script, name=name, description=description,
                     folder=folder, icon=icon)
-
-    homedir = get_homedir()
 
     pyexe = os.path.join(sys.prefix, 'pythonw.exe')
     if terminal:
@@ -1085,5 +1125,48 @@ if __name__ == '__main__':
 
 </t>
 <t tx="lkj.20190915160754.1"></t>
+<t tx="lkj.20190919213126.1">@nosearch
+@language python
+
+# flattened, ignore-case, head, body
+
+# found 9 nodes</t>
+<t tx="lkj.20190919213421.1">@nosearch
+@language python
+# flattened, ignore-case, head, body
+
+# found 13 nodes</t>
+<t tx="lkj.20190919214201.1">def get_folders():
+    """Return named tuple of Home, Desktop and Startmenu paths.
+
+        folders = get_win_folders()
+        print("Home, Desktop, StartMenu ",
+            folders.home, folders.desktop, folders.startmenu)
+    """
+    import win32com.client
+    from collections import namedtuple
+
+    shellapp = win32com.client.Dispatch("Shell.Application")
+
+    nt = namedtuple("folders", "home desktop startmenu")
+    folders = nt(
+        shellapp.namespace(40).self.path,
+        shellapp.namespace(0).self.path,
+        shellapp.namespace(11).self.path,
+    )
+    return folders
+    # Windows Special Folders
+    # ID numbers from https://gist.github.com/maphew/47e67b6a99e240f01aced8b6b5678eeb
+    # https://docs.microsoft.com/en-gb/windows/win32/api/shldisp/ne-shldisp-shellspecialfolderconstants#constants
+    #
+    # Start menu: user = 11, all users = 22
+    # Desktop   : user =  0, all users = 25
+    # Profile   : = 40, same as %USERPROFILE%
+</t>
+<t tx="lkj.20190919235058.1">@nosearch
+
+# flattened, ignore-case, head, body
+
+# found 3 nodes</t>
 </tnodes>
 </leo_file>
